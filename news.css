@@ -1,0 +1,36 @@
+#news-wrapper {
+    border: solid black 1px;
+    background-color: black;
+  }
+
+#news-body {
+  border: solid black 1px;
+  background-color: black;
+}
+
+#news-body a {
+  text-decoration: none;
+  color:rgb(151, 152, 150);
+}
+
+#news-header {
+  color:rgb(151, 152, 150);
+  font-size: 20px;
+  padding-left: 40px;
+  padding-right: 25px;
+  padding-top: 0px;
+}
+
+#news {
+  padding-top: 0px;
+  color:white;
+  font-size: 15px;
+  padding-left: 40px;
+  padding-right: 25px;
+}
+
+.animated headShake delay-2s {
+    animation-duration: 5s;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+  }

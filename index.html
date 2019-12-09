@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CryptoCoin</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="index.css" />
+    <link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet">
+</head>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+         <!-- particles.js container -->
+  <div id="particles-js" class="splash-logo">
+        
+        </div>
+        <div id="click">
+        <div class="navbar-header">
+            <a class="navbar-brand" style="font-size: 35px" href="splash.html">
+                <span class="flex-row justify-content-around"><img src="images/logo.png" width="115" height="100"
+                        alt="CryptoCoin"></span>
+                CryptoCoin
+            </a>
+        </div>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav pr-4">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="prices.html">Prices</a>
+                </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="news.html">News</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="blockchain.html">Blockchain 101</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+            </ul>
+        </div>
+        </div>
+
+    </nav>
+</header>
+ <!-- scripts -->
+ <script src="particles.js"></script>
+ <script src="app.js"></script>
+
+<div class="container">
+    <div class="row pt-2">
+        <div class="col-12 header text-center">
+            <h2 class="display-3">CryptoCoin:</h2>
+            <p class="pt-0 pb-3" style="font-size:26px">Cash for the digital age.</p>
+        </div>
+    </div>
+
+    <div class="pb-3">
+        <table class="table table-dark col-12 justify-content-center">
+            <thead>
+                <tr class="justify-content-center justify-content-around">
+                    <th scope="col"><span><img src="images/ethereum_logo.png" height="60px"></span></th>
+                    <th scope="col"><span><img src="images/litecoin-logo.png" height="60px"></span></th>
+                    <th scope="col"><span><img src="images/bitcoin_logo.png" height="60px"></span></th>
+                    <th scope="col"><span><img src="images/bitcoincash-logo.png" height="60px"></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="justify-content-center justify-content-around">
+                    <td id="ETH"></td>
+                    <td id="LTC"></td>
+                    <td id="USD"></td>
+                    <td id="BCH"></td>
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <form class="form-inline form-row flex-row justify-content-center pt-4 pb-3 pr-3 col-lg-12" style="background-color:#f7e199">
+            <span class="form-inline form-row flex-row pr-4">
+                <h5>Sign up. Stay informed.</h5>
+            </span> <label class="sr-only" for="inlineFormInputName2">Sign up</label>
+            <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName" placeholder="Full name">
+        
+            <label class="sr-only" for="inlineFormInputGroupUsername2">Email</label>
+            <div class="input-group mb-2 mr-sm-2">
+                <input type="text" class="form-control" id="inlineFormInputEmail" placeholder="Email">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+        </form>
+
+</form>
+<script>
+
+        request("GET", "http://rest-sandbox.coinapi.io/v1/exchangerate/BTC?apikey=0FB5E317-142D-412D-824B-A5F59FE8F0E0" )
+        .then((data) => {
+            var data = data.target.response
+            var dataObject = JSON.parse(data)
+            console.log(dataObject)
+
+            var FullDigitalCurrencyArray = dataObject.rates.filter(function(data){
+
+                if (data.asset_id_quote === 'USD'){
+                    return true
+                }
+                if(data.asset_id_quote === 'LTC'){
+                    return true
+                }
+                if(data.asset_id_quote === 'ETH'){
+                    return true
+                }
+                if(data.asset_id_quote === 'XRP'){
+                    return true
+                }
+                if(data.asset_id_quote === 'BCH'){
+                    return true
+                }
+                else{
+                    console.log('Not looking for these')
+                } 
+                return false
+
+                
+            console.log(FullDigitalCurrencyArray)
+
+            });
+        
+
+            
+        console.log(FullDigitalCurrencyArray)
+
+
+        var selectCoins = FullDigitalCurrencyArray.map(data2 => {
+
+                var siteDict = []
+
+                if (data2.asset_id_quote === 'USD'){
+                    var USD = data2.rate
+                    console.log(USD)
+                    siteDict.push([USD])
+                    console.log(USD)
+                    return USD
+                }
+                if (data2.asset_id_quote === 'LTC'){
+                    var LTC = data2.rate
+                    return LTC
+                }
+                if (data2.asset_id_quote === 'ETH'){
+                    var ETH = data2.rate
+                    return ETH
+                }
+                if (data2.asset_id_quote === 'BCH'){
+                    var BCH = data2.rate
+                    return BCH
+                }
+                if (data2.asset_id_quote === 'XRP'){
+                    var XRP = data2.rate
+                    return XRP
+                }
+
+                var siteDict = {'USD': USD, 'LTC': LTC, 'ETH': ETH, 'BCH': BCH, 'XRP':XRP} 
+                console.log(siteDict)
+
+                return (USD,LTC,ETH,XRP,BCH)
+                
+            });
+
+        });
+    
+
+
+        var selectCoins = {}
+
+
+        request("GET", "http://rest-sandbox.coinapi.io/v1/exchangerate/BTC?apikey=0FB5E317-142D-412D-824B-A5F59FE8F0E0")
+            .then((data) => {
+                var data = data.target.response
+                var dataObject = JSON.parse(data)
+                console.log(dataObject)
+
+                var FullDigitalCurrencyArray = dataObject.rates.filter(function (data) {
+
+                    if (data.asset_id_quote === 'USD') {
+                        return true
+                    }
+                    if (data.asset_id_quote === 'LTC') {
+                        return true
+                    }
+                    if (data.asset_id_quote === 'ETH') {
+                        return true
+                    }
+                    if (data.asset_id_quote === 'XRP') {
+                        return true
+                    }
+                    if (data.asset_id_quote === 'BCH') {
+                        return true
+                    }
+                    else {
+                        console.log('Not looking for these')
+                    }
+                    return false
+
+
+                    console.log(FullDigitalCurrencyArray)
+
+                });
+
+
+                FullDigitalCurrencyArray.forEach(data2 => {
+
+                    if (data2.asset_id_quote === 'USD') {
+                        var USD = data2.rate
+                        selectCoins["USD"] = USD
+                    }
+                    if (data2.asset_id_quote === 'LTC') {
+                        var LTC = data2.rate
+                        selectCoins["LTC"] = LTC
+                    }
+                    if (data2.asset_id_quote === 'ETH') {
+                        var ETH = data2.rate
+                        selectCoins["ETH"] = ETH
+                    }
+                    if (data2.asset_id_quote === 'BCH') {
+                        var BCH = data2.rate
+                        selectCoins["BCH"] = BCH
+                    }
+                    if (data2.asset_id_quote === 'XRP') {
+                        var XRP = data2.rate
+                        selectCoins["XRP"] = XRP
+                    }
+
+                    return (USD, LTC, ETH, XRP, BCH)
+
+
+                });
+                var objectLTC = document.getElementById('LTC'); //Grabbing Elements by ID's
+                var objectBCH = document.getElementById('BCH');
+                var objectETH = document.getElementById('ETH');
+                var objectUSD = document.getElementById('USD');
+
+                LTCusd = selectCoins.USD/(selectCoins.LTC) //Converting LItecoin value to USD
+                BCHusd = selectCoins.USD/(selectCoins.BCH) //Converting BitCoin Cash value to USD
+                ETHusd = selectCoins.USD/(selectCoins.ETH) //Converting Ethereum value to USD
+                
+                BCHScreenData = BCHusd.toFixed(2) //Rounding values to 2 decimal places
+                LTCScreenData = LTCusd.toFixed(2)
+                ETHScreenData = ETHusd.toFixed(2)
+                USDScreenData = selectCoins.USD.toFixed(2)
+                
+                objectBCH.innerHTML = ('$' + BCHScreenData) //Rendering Coin figures to Screen
+                objectLTC.innerHTML = ('$' + LTCScreenData)
+                objectETH.innerHTML = ('$' + ETHScreenData)
+                objectUSD.innerHTML = ('$' + USDScreenData)
+                
+            });
+
+        function request(method, url) {
+            return new Promise(function (resolve, reject) {
+                var xhr = new XMLHttpRequest();
+                xhr.open(method, url);
+                xhr.onload = resolve;
+                xhr.onerror = reject;
+                xhr.send();
+            });
+        }
+
+
+
+    </script>
+
+
+    
+    
+
+    
+    
+    
+</form>
+
+<div class="pt-5">
+<nav class="navbar fixed-bottom navbar-expand-lg navbar-dark p-0">
+    <div>
+        <a href="about.html">
+        <span class="flex-row justify-content-start navbar-brand"><img src="images/social-icons.png"
+                height="40px">
+        </a>
+        </span>
+    </div>
+</nav>
+</div>
+<br>
+<br>
+
+<script>
+request("GET", "https://rest-sandbox.coinapi.io/v1/exchangerate/BTC?apikey=0FB5E317-142D-412D-824B-A5F59FE8F0E0")
+$.getJSON("https://rest-sandbox.coinapi.io/v1/exchangerate/BTC?apikey=0FB5E317-142D-412D-824B-A5F59FE8F0E0")
+    .then((data) => {
+        var data = data.target.response
+        var dataObject = JSON.parse(data)
+        console.log(dataObject.rates[0].rate)
+    }).catch()
+
+function request(method, url) {
+    return new Promise(function (resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        xhr.open(method, url);
+        xhr.onload = resolve;
+        xhr.onerror = reject;
+        xhr.send();
+    })
+}
+</script>
+
+</body>
+
+</html>

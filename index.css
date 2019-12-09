@@ -1,0 +1,85 @@
+* {
+    font-family: 'Special Elite', cursive;
+    font-size: 18px;
+}
+
+body {
+	background-color: #e6e6e6;
+}
+
+.header h2 {
+    color: black;
+    padding-top: 25px;
+}
+
+h4 {
+    color: black;
+    padding-top: 50px;
+}
+
+.p {
+    padding-top: 0px;
+	color: #50524F;
+}
+
+.navbar {
+    background-color: black;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+    align-items: center;
+}
+
+.btn {
+    background-color: #50524F;
+    border: gold solid 1px
+}
+
+.footer {
+    align-self: baseline;
+}
+
+.content {
+    padding-top: 20px;
+}
+
+
+.splash-logo {
+    display: inline-block;
+    justify-content: center;
+    z-index: 1; 
+    position: absolute; 
+    top: 40%;
+    transform: translateY(-50%);
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    width: 100%;
+    vertical-align: middle;
+    height: 200px;
+  }
+
+  #title {
+    display: inline-flex;
+    justify-content: center;
+    z-index: 2; 
+    position: relative; 
+    top: 0px; 
+    
+    color: white;
+    padding-top: 50px;
+    font-size: 50px;
+  }
+
+  #navbarNav {
+    display: inline-flex;
+    z-index: 3;
+  }
+
+  .navbar-brand, .click {
+    display: inline-flex;
+    justify-content: baseline;
+    z-index: 3;
+    position: relative; 
+  }
