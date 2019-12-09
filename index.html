@@ -113,7 +113,7 @@
 </form>
 <script>
 
-        request("GET", "http://rest-sandbox.coinapi.io/v1/exchangerate/BTC?apikey=0FB5E317-142D-412D-824B-A5F59FE8F0E0" )
+        request("GET", "https://rest-sandbox.coinapi.io/v1/exchangerate/BTC?apikey=0FB5E317-142D-412D-824B-A5F59FE8F0E0" )
         .then((data) => {
             var data = data.target.response
             var dataObject = JSON.parse(data)
@@ -193,7 +193,7 @@
         var selectCoins = {}
 
 
-        request("GET", "http://rest-sandbox.coinapi.io/v1/exchangerate/BTC?apikey=0FB5E317-142D-412D-824B-A5F59FE8F0E0")
+        request("GET", "https://rest-sandbox.coinapi.io/v1/exchangerate/BTC?apikey=0FB5E317-142D-412D-824B-A5F59FE8F0E0")
             .then((data) => {
                 var data = data.target.response
                 var dataObject = JSON.parse(data)
